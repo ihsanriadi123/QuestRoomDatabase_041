@@ -119,6 +119,7 @@ fun ItemDetailMhs(
     }
 }
 
+
 @Composable
 fun BodyDetailMhs(
     modifier: Modifier = Modifier,
