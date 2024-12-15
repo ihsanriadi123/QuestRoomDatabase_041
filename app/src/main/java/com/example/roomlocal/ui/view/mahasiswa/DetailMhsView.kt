@@ -180,6 +180,7 @@ fun BodyDetailMhs(
     }
 }
 
+
 @Composable
 fun DetailMhsView(
     modifier: Modifier = Modifier,
