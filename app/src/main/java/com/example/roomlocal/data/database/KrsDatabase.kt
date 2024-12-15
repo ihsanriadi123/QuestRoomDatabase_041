@@ -1,7 +1,6 @@
 package com.example.roomlocal.data.database
 
 import android.content.Context
-import android.provider.CalendarContract.Instances
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -24,7 +23,7 @@ abstract class KrsDatabase : RoomDatabase() {
                 Room.databaseBuilder(
                     context.applicationContext,
                     KrsDatabase::class.java,
-                    "krsDatabase"
+                    "KrsDatabase"
                 )
                     .build().also { Instances =it }
             })

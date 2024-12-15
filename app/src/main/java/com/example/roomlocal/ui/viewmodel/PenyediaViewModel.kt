@@ -1,23 +1,41 @@
-package com.example.roomlocal.ui.viewmodel
+package com.example.pertemuan10.ui.viewmodel
 
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
 import androidx.lifecycle.viewmodel.initializer
 import androidx.lifecycle.viewmodel.viewModelFactory
+import com.example.pertemuan10.KrsApp
 import com.example.roomlocal.KrsApp
+import com.example.roomlocal.ui.viewmodel.UpdateMhsViewModel
 
 object PenyediaViewModel {
 
-    // Factory to create MahasiswaViewModel instances
     val Factory = viewModelFactory {
         initializer {
             MahasiswaViewModel(
                 krsApp().containerApp.repositoryMhs
             )
         }
+        initializer {
+            HomeMhsViewModel(
+                krsApp().containerApp.repositoryMhs
+            )
+        }
+        initializer {
+            DetailMhsViewModel(
+                createSavedStateHandle(),
+                krsApp().containerApp.repositoryMhs,
+            )
+        }
+        initializer {
+            UpdateMhsViewModel(
+                createSavedStateHandle(),
+                krsApp().containerApp.repositoryMhs,
+            )
+        }
     }
 }
 
-// Extension function to retrieve KrsApp instance from CreationExtras
-fun CreationExtras.krsApp(): KrsApp {
-    return this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as KrsApp}
+fun CreationExtras.krsApp(): KrsApp =
+    (this[ViewModelProvider.AndroidViewModelFactory.APPLICATION_KEY] as KrsApp)
